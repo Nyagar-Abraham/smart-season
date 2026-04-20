@@ -1,9 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { 
   LayoutDashboard, 
-  Map as MapIcon, 
-  Users, 
-  Settings, 
+  Map as MapIcon,
   LogOut,
   Bell,
   Menu,
