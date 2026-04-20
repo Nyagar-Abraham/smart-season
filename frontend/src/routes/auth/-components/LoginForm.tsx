@@ -10,6 +10,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/componen
 import { toast } from 'sonner';
 
 import { useAuth } from '@/context/auth-context';
+import {Link} from "@tanstack/react-router";
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -114,15 +115,12 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
           >
             {mutation.isPending ? 'Signing in...' : 'Login'}
           </Button>
-
-          <div className="text-center w-full text-sm text-gray-500">
-            Need help? <a href="#" className="text-blue-600 hover:underline">Contact Admin</a>
-          </div>
+          
           
           <div className="text-center w-full pt-2">
-            <a href="/auth/signup" className="text-sm font-medium text-green-700 hover:underline">
+            <Link to="/auth/signup" className="text-sm font-medium text-green-700 hover:underline">
               Don't have an account? Sign up
-            </a>
+            </Link>
           </div>
         </CardFooter>
       </form>
