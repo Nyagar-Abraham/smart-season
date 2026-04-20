@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect,type ReactNode } from 'react';
 import {type User } from '../routes/auth/-api-request-response-types';
-import { useRouter} from "@tanstack/react-router";
 
 interface AuthContextType {
   user: User | null;
@@ -15,7 +14,6 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
     const storedUser = localStorage.getItem('auth_user');

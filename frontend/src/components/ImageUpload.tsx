@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { X, Upload, Image as ImageIcon } from 'lucide-react';
-import { Button } from './ui/button';
+import { X, Upload} from 'lucide-react';
+
 import { cn } from '@/lib/utils';
 
 interface ImageUploadProps {
@@ -65,7 +65,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
 
       {value.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {value.map((file, index) => (
+          {value.map((_ , index) => (
             <div key={index} className="relative group aspect-square rounded-md overflow-hidden border border-gray-200">
               <img
                 src={previews[index]}
