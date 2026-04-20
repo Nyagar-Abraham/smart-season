@@ -1,4 +1,4 @@
-import { userRepository } from '../../repositories/user-repository.ts';
+import { userRepository } from '../../repositories/user-repository.js';
 
 export class AdminService {
   async getAllAgents() {

@@ -1,6 +1,6 @@
 import { pgEnum, pgTable as table } from 'drizzle-orm/pg-core';
 import * as t from 'drizzle-orm/pg-core';
-import { timestamps } from './commons.ts';
+import { timestamps } from './commons.js';
 
 export const roleEnum = pgEnum('roles', ['admin', 'field_agent']);
 

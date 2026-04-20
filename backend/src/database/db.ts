@@ -1,9 +1,9 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import pg from 'pg';
 import dotenv from 'dotenv';
-import * as usersSchema from './schemas/users.ts';
-import * as fieldsSchema from './schemas/fields.ts';
-import * as fieldUpdatesSchema from './schemas/field_updates.ts';
+import * as usersSchema from './schemas/users.js';
+import * as fieldsSchema from './schemas/fields.js';
+import * as fieldUpdatesSchema from './schemas/field_updates.js';
 
 dotenv.config();
 

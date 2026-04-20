@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
-import { adminService } from './admin-service.ts';
+import { adminService } from './admin-service.js';
 
 export const handleGetAgents = async (req: Request, res: Response, next: NextFunction) => {
   try {

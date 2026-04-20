@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { handleSignup, handleLogin } from './auth-http-request-handlers.ts';
-import { signupValidation, loginValidation } from './auth-validation.ts';
+import { handleSignup, handleLogin } from './auth-http-request-handlers.js';
+import { signupValidation, loginValidation } from './auth-validation.js';
 
 const router = Router();
 

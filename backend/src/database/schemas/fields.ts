@@ -1,7 +1,7 @@
 import { pgEnum, pgTable as table } from 'drizzle-orm/pg-core';
 import * as t from 'drizzle-orm/pg-core';
-import { timestamps } from './commons.ts';
-import { usersTable } from './users.ts';
+import { timestamps } from './commons.js';
+import { usersTable } from './users.js';
 
 export const fieldStageEnum = pgEnum('field_stages', ['Planted', 'Growing', 'Ready', 'Harvested']);
 export const fieldStatusEnum = pgEnum('field_status', ['Active', 'At Risk', 'Completed']);

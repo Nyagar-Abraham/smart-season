@@ -11,9 +11,9 @@ import {
   handleGetAgentUpdates,
   handleGetMyFields,
   handleRefreshFieldStatus
-} from './field-http-request-handlers.ts';
-import { validateField, validateFieldUpdate, validateAssignField } from './field-validation.ts';
-import { authenticate, authorize } from '../auth/auth-middleware.ts';
+} from './field-http-request-handlers.js';
+import { validateField, validateFieldUpdate, validateAssignField } from './field-validation.js';
+import { authenticate, authorize } from '../auth/auth-middleware.js';
 
 const router = Router();
 const upload = multer({ storage: multer.memoryStorage() });

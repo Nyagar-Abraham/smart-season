@@ -1,7 +1,7 @@
 import { eq, desc } from 'drizzle-orm';
-import { db } from '../database/db.ts';
-import { fieldsTable, type NewField, type Field } from '../database/schemas/fields.ts';
-import { fieldUpdatesTable, type NewFieldUpdate } from '../database/schemas/field_updates.ts';
+import { db } from '../database/db.js';
+import { fieldsTable, type NewField, type Field } from '../database/schemas/fields.js';
+import { fieldUpdatesTable, type NewFieldUpdate } from '../database/schemas/field_updates.js';
 
 export const fieldRepository = {
   async createField(field: NewField) {

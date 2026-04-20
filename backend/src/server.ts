@@ -8,15 +8,15 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import morgan from 'morgan';
 import { pinoHttp } from 'pino-http';
-import { logger } from './lib/logger.ts';
+import { logger } from './lib/logger.js';
 import fs from 'fs';
 import path from 'path';
 import { randomUUID } from 'crypto';
-import { arcjetMiddleware } from './lib/middlewares/arcjet-middleware.ts';
-import { globalErrorHandler } from './lib/middlewares/global-error-handler.ts';
-import AuthRoute from './modules/auth/auth-route.ts';
-import FieldRoute from './modules/fields/field-route.ts';
-import AdminRoute from './modules/admin/admin-route.ts';
+import { arcjetMiddleware } from './lib/middlewares/arcjet-middleware.js';
+import { globalErrorHandler } from './lib/middlewares/global-error-handler.js';
+import AuthRoute from './modules/auth/auth-route.js';
+import FieldRoute from './modules/fields/field-route.js';
+import AdminRoute from './modules/admin/admin-route.js';
 
 dotenv.config();
 

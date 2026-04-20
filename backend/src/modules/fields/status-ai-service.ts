@@ -1,8 +1,8 @@
 import { ChatOpenAI } from '@langchain/openai';
 import { PromptTemplate } from '@langchain/core/prompts';
 import { JsonOutputParser } from '@langchain/core/output_parsers';
-import { type Field } from '../../database/schemas/fields.ts';
-import { type FieldUpdate } from '../../database/schemas/field_updates.ts';
+import { type Field } from '../../database/schemas/fields.js';
+import { type FieldUpdate } from '../../database/schemas/field_updates.js';
 
 export class FieldStatusAIService {
   private model: ChatOpenAI;

@@ -1,5 +1,5 @@
 import type { ArcjetDecision } from '@arcjet/node';
-import { aj } from '../../config/arcjet-config.ts';
+import { aj } from '../../config/arcjet-config.js';
 import type { Request, Response, NextFunction } from 'express';
 
 export const arcjetMiddleware = async (

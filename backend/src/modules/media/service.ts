@@ -1,6 +1,6 @@
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import s3Client from '../../config/s3-client.ts';
+import s3Client from '../../config/s3-client.js';
 
 export async function generatePresignedUrl(
   filename: string,

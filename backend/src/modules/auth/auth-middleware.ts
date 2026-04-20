@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
-import { verifyToken } from './jwt-service.ts';
-import { type Role } from '../../database/schemas/users.ts';
+import { verifyToken } from './jwt-service.js';
+import { type Role } from '../../database/schemas/users.js';
 
 export interface AuthRequest extends Request {
   user?: {

@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
-import { fieldService } from './field-service.ts';
-import { processImageBuffer } from '../../lib/utils/image-utils.ts';
-import { uploadToS3 } from '../media/service.ts';
+import { fieldService } from './field-service.js';
+import { processImageBuffer } from '../../lib/utils/image-utils.js';
+import { uploadToS3 } from '../media/service.js';
 
 async function processAndUploadImages(files: Express.Multer.File[]) {
   const uploadPromises = files.map(async (file) => {

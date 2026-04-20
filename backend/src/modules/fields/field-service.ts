@@ -1,7 +1,7 @@
-import { fieldRepository, fieldUpdateRepository } from '../../repositories/field-repository.ts';
-import { type NewField, type Field } from '../../database/schemas/fields.ts';
-import { type NewFieldUpdate } from '../../database/schemas/field_updates.ts';
-import { fieldStatusAIService } from './status-ai-service.ts';
+import { fieldRepository, fieldUpdateRepository } from '../../repositories/field-repository.js';
+import { type NewField, type Field } from '../../database/schemas/fields.js';
+import { type NewFieldUpdate } from '../../database/schemas/field_updates.js';
+import { fieldStatusAIService } from './status-ai-service.js';
 
 export class FieldService {
   async createField(data: NewField) {

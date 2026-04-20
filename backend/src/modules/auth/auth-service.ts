@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
-import { type NewUser } from '../../database/schemas/users.ts';
-import { userRepository } from '../../repositories/user-repository.ts';
-import { generateToken } from './jwt-service.ts';
+import { type NewUser } from '../../database/schemas/users.js';
+import { userRepository } from '../../repositories/user-repository.js';
+import { generateToken } from './jwt-service.js';
 
 interface SignUpData {
  fullName: string;
