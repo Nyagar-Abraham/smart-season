@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import LoginForm from '../-components/LoginForm';
 
 export const Route = createFileRoute('/auth/login')({
@@ -6,12 +6,11 @@ export const Route = createFileRoute('/auth/login')({
 });
 
 function LoginPage() {
-  const navigate = useNavigate();
 
   return (
     <LoginForm
       onSuccess={() => {
-        window.location.href = '/'; // Refresh to update auth context
+        window.location.href = '/';
       }}
     />
   );

@@ -57,3 +57,35 @@
     "vite": "^6.0.3"
   }
 }
+
+
+//4. Domain Configuration (GoDaddy)
+//Now, connect your professional domain.
+//1.
+//Frontend (Primary Domain):
+//◦
+//In Vercel, go to Settings > Domains and add yourdomain.com.
+//◦
+//Vercel will provide an A Record or CNAME.
+//◦
+//Log in to GoDaddy DNS Management and update your records to match Vercel's requirements.
+//2.
+//Backend (API Subdomain):
+//◦
+//It is best practice to host the API on a subdomain like api.yourdomain.com.
+//◦
+//In Render, go to Settings > Custom Domains and add api.yourdomain.com.
+//◦
+//Add the provided CNAME record in your GoDaddy DNS settings.
+//5. Security & Final Polish
+//1.
+//CORS Update: Once your domains are active, update the CORS_ORIGIN in your Backend environment variables to https://yourdomain.com.
+//2.
+//SSL: Both Vercel and Render provide automatic SSL (HTTPS) certificates. Verify that both URLs load over HTTPS.
+//3.
+//Logging: Check your Render logs to ensure the Pino/Morgan integration you implemented is correctly writing to the logs/ directory in the persistent volume (if configured) or standard output.
+//6. Maintenance Checklist
+//•
+//Database Migrations: Ensure you run pnpm drizzle-kit push (or a migration script) against the production database during deployment.
+//•
+//Monitoring: Set up a free monitoring tool like UptimeRobot to ping your API and Frontend every 5 minutes to ensure they stay awake.

@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate, redirect } from '@tanstack/react-router';
+import { createFileRoute, useNavigate, redirect } from '@tanstack/react-router';
 import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { StatusBadge } from '@/components/shared/StatusBadge';
 import { CropProgress } from '@/components/shared/CropProgress';
