@@ -1,0 +1,399 @@
+{
+  "id": "6731e913-2215-43e1-a3b7-033b6bca45fb",
+  "prevId": "8994a49f-411d-403c-8934-bd8e29f78c77",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.field_updates": {
+      "name": "field_updates",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "field_updates_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "fieldId": {
+          "name": "fieldId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "agentId": {
+          "name": "agentId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stageUpdate": {
+          "name": "stageUpdate",
+          "type": "field_stages",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "idx_field_updates_field": {
+          "name": "idx_field_updates_field",
+          "columns": [
+            {
+              "expression": "fieldId",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "idx_field_updates_agent": {
+          "name": "idx_field_updates_agent",
+          "columns": [
+            {
+              "expression": "agentId",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "field_updates_fieldId_fields_id_fk": {
+          "name": "field_updates_fieldId_fields_id_fk",
+          "tableFrom": "field_updates",
+          "tableTo": "fields",
+          "columnsFrom": [
+            "fieldId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "field_updates_agentId_users_id_fk": {
+          "name": "field_updates_agentId_users_id_fk",
+          "tableFrom": "field_updates",
+          "tableTo": "users",
+          "columnsFrom": [
+            "agentId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.fields": {
+      "name": "fields",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "fields_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cropType": {
+          "name": "cropType",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "plantingDate": {
+          "name": "plantingDate",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "currentStage": {
+          "name": "currentStage",
+          "type": "field_stages",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'Planted'"
+        },
+        "status": {
+          "name": "status",
+          "type": "field_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'Active'"
+        },
+        "aiRiskReason": {
+          "name": "aiRiskReason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "assignedAgentId": {
+          "name": "assignedAgentId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "images": {
+          "name": "images",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "idx_fields_assigned_agent": {
+          "name": "idx_fields_assigned_agent",
+          "columns": [
+            {
+              "expression": "assignedAgentId",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "fields_assignedAgentId_users_id_fk": {
+          "name": "fields_assignedAgentId_users_id_fk",
+          "tableFrom": "fields",
+          "tableTo": "users",
+          "columnsFrom": [
+            "assignedAgentId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "users_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "passwordHash": {
+          "name": "passwordHash",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fullName": {
+          "name": "fullName",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "roles",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'field_agent'"
+        },
+        "isActive": {
+          "name": "isActive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "idx_users_email": {
+          "name": "idx_users_email",
+          "columns": [
+            {
+              "expression": "email",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_email_unique": {
+          "name": "users_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.field_stages": {
+      "name": "field_stages",
+      "schema": "public",
+      "values": [
+        "Planted",
+        "Growing",
+        "Ready",
+        "Harvested"
+      ]
+    },
+    "public.field_status": {
+      "name": "field_status",
+      "schema": "public",
+      "values": [
+        "Active",
+        "At Risk",
+        "Completed"
+      ]
+    },
+    "public.roles": {
+      "name": "roles",
+      "schema": "public",
+      "values": [
+        "admin",
+        "field_agent"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
