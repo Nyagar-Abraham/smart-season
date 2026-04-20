@@ -14,7 +14,6 @@ import { toast } from 'sonner';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { FIELDS_API_METHODS } from '../fields/-api-methods';
 import { format } from 'date-fns';
-import { useAuth } from '@/context/auth-context';
 
 const fieldUpdateSchema = z.object({
   fieldId: z.string().min(1, 'Please select a field'),
@@ -35,9 +34,8 @@ export const Route = createFileRoute('/updates')({
 
 function UpdatesPage() {
   const queryClient = useQueryClient();
-  const { user } = useAuth();
-
-  const { data: fieldsResponse, isLoading: fieldsLoading } = useQuery({
+  
+  const { data: fieldsResponse } = useQuery({
     queryKey: ['my-fields'],
     queryFn: FIELDS_API_METHODS.getMyFields,
   });

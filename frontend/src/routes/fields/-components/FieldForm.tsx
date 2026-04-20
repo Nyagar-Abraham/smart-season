@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
 import { FIELDS_API_METHODS } from '../-api-methods';
-import  type { Field, FieldStage } from '../-api-types';
+import  type { Field } from '../-api-types';
 import { ImageUpload } from '@/components/ImageUpload';
 
 const fieldSchema = z.object({
@@ -137,7 +137,7 @@ export default function FieldForm({ field, onSuccess }: FieldFormProps) {
         />
         {field?.images && field.images.length > 0 && !isEditing && (
            <div className="mt-2 text-xs text-gray-500">
-             Note: This field already has {field.images.length} images.
+             Note: This field already has {(field as Field).images.length} images.
            </div>
         )}
       </div>
