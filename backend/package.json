@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc",
+    "db:push": "drizzle-kit push --config=src/config/drizzle-config.ts",
     "dev": "nodemon src/server.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
