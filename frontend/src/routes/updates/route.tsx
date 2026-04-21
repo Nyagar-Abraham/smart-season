@@ -23,6 +23,8 @@ const fieldUpdateSchema = z.object({
 
 type FieldUpdateValues = z.infer<typeof fieldUpdateSchema>;
 
+import { Skeleton } from '@/components/ui/skeleton';
+
 export const Route = createFileRoute('/updates')({
   beforeLoad: ({ context }) => {
     if (!context.isAuthenticated) {
@@ -196,9 +198,14 @@ function UpdatesPage() {
                 </TableHeader>
                 <TableBody>
                   {updatesLoading ? (
-                    <TableRow>
-                      <TableCell colSpan={4} className="text-center py-8 text-gray-500">Loading updates...</TableCell>
-                    </TableRow>
+                    Array.from({ length: 5 }).map((_, i) => (
+                      <TableRow key={i}>
+                        <TableCell className="py-4"><Skeleton className="h-5 w-24" /></TableCell>
+                        <TableCell className="py-4"><Skeleton className="h-5 w-32" /></TableCell>
+                        <TableCell className="py-4"><Skeleton className="h-6 w-16" /></TableCell>
+                        <TableCell className="py-4"><Skeleton className="h-5 w-full" /></TableCell>
+                      </TableRow>
+                    ))
                   ) : updates.length === 0 ? (
                     <TableRow>
                       <TableCell colSpan={4} className="text-center py-8 text-gray-500">No updates found.</TableCell>

@@ -15,6 +15,8 @@ import type { Field } from './-api-types';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
+import { Skeleton } from '@/components/ui/skeleton';
+
 export const Route = createFileRoute('/fields')({
   beforeLoad: ({ context }) => {
     if (!context.isAuthenticated) {
@@ -102,7 +104,30 @@ function FieldsListPage() {
           </CardHeader>
           <CardContent className="p-0 bg-white">
             {isLoadingFields ? (
-              <div className="p-8 text-center text-gray-500">Loading fields...</div>
+              <div className="divide-y divide-gray-50">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 gap-4">
+                    <div className="flex items-center gap-4">
+                      <Skeleton className="w-12 h-12 rounded-lg" />
+                      <div className="space-y-2">
+                        <Skeleton className="h-5 w-40" />
+                        <Skeleton className="h-3 w-60" />
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="flex flex-col items-end gap-1">
+                        <Skeleton className="h-5 w-16" />
+                        <Skeleton className="h-3 w-12" />
+                      </div>
+                      <div className="flex gap-2">
+                        <Skeleton className="h-8 w-8" />
+                        <Skeleton className="h-8 w-12" />
+                        <Skeleton className="h-8 w-16" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             ) : filteredFields.length === 0 ? (
               <div className="p-8 text-center text-gray-500">No fields found.</div>
             ) : (

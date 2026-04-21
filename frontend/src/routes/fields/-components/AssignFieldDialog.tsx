@@ -7,6 +7,8 @@ import { FIELDS_API_METHODS, AGENTS_API_METHODS } from '../-api-methods';
 import type { Field } from '../-api-types';
 import { useState } from 'react';
 
+import { Skeleton } from '@/components/ui/skeleton';
+
 interface AssignFieldDialogProps {
   field: Field;
   onSuccess: () => void;
@@ -49,12 +51,19 @@ export default function AssignFieldDialog({ field, onSuccess }: AssignFieldDialo
             <SelectValue placeholder="Select an agent" />
           </SelectTrigger>
           <SelectContent>
-            {/*<SelectItem value="">Unassigned</SelectItem>*/}
-            {agentsResponse?.data?.map((agent: any) => (
-              <SelectItem key={agent.id} value={agent.id.toString()}>
-                {agent.fullName}
-              </SelectItem>
-            ))}
+            {isLoadingAgents ? (
+              <div className="p-2 space-y-2">
+                <Skeleton className="h-8 w-full" />
+                <Skeleton className="h-8 w-full" />
+                <Skeleton className="h-8 w-full" />
+              </div>
+            ) : (
+              agentsResponse?.data?.map((agent: any) => (
+                <SelectItem key={agent.id} value={agent.id.toString()}>
+                  {agent.fullName}
+                </SelectItem>
+              ))
+            )}
           </SelectContent>
         </Select>
       </div>

@@ -24,6 +24,8 @@ import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
+import { Skeleton } from '@/components/ui/skeleton';
+
 export const Route = createFileRoute('/fields/$fieldId')({
   beforeLoad: ({ context }) => {
     if (!context.isAuthenticated) {
@@ -63,7 +65,44 @@ function FieldDetailsPage() {
   });
 
   if (isLoadingField) {
-    return <div className="p-8 text-center">Loading field details...</div>;
+    return (
+      <DashboardLayout role={user?.role || 'field_agent'}>
+        <div className="space-y-6">
+          <div className="flex items-center gap-4">
+            <Skeleton className="h-9 w-20" />
+            <div className="flex flex-1 items-center justify-between">
+              <Skeleton className="h-8 w-48" />
+              <div className="flex items-center gap-4">
+                <Skeleton className="h-8 w-32" />
+                <div className="flex flex-col items-end gap-1">
+                  <Skeleton className="h-6 w-20" />
+                  <Skeleton className="h-3 w-12" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <Skeleton className="h-24 w-full rounded-xl" />
+          <Skeleton className="h-40 w-full rounded-xl" />
+          <Card className="border-none shadow-sm rounded-xl p-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div className="flex items-center gap-4">
+                <Skeleton className="h-12 w-12 rounded-xl" />
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-12" />
+                  <Skeleton className="h-6 w-24" />
+                </div>
+              </div>
+              <Skeleton className="h-8 flex-1" />
+            </div>
+          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Skeleton className="h-24 rounded-xl" />
+            <Skeleton className="h-24 rounded-xl" />
+            <Skeleton className="h-24 rounded-xl" />
+          </div>
+        </div>
+      </DashboardLayout>
+    );
   }
 
   const field = fieldResponse?.data;
@@ -228,7 +267,19 @@ function FieldDetailsPage() {
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-gray-900">Monitoring History</h2>
           {isLoadingUpdates ? (
-            <div className="text-center py-4">Loading history...</div>
+            <div className="space-y-4">
+              {[1, 2, 3].map((i) => (
+                <Card key={i} className="border-none shadow-sm rounded-xl">
+                  <CardContent className="p-4 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <Skeleton className="h-6 w-24" />
+                      <Skeleton className="h-4 w-32" />
+                    </div>
+                    <Skeleton className="h-16 w-full" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           ) : updates.length === 0 ? (
             <Card className="border-dashed border-2 border-gray-100 bg-transparent shadow-none">
               <CardContent className="flex flex-col items-center justify-center p-8 text-gray-400">
