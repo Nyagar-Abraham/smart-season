@@ -65,7 +65,7 @@ When a field agent submits notes, the system uses AI to categorize the field. If
 
 ---
 
-## 📐 Design Decisions
+## Design Decisions
 
 - **Monorepo-lite Structure**: Separate `backend` and `frontend` directories for clear separation of concerns while keeping them in a single repository for easier coordination.
 - **Drizzle ORM**: Chosen for its type-safety and performance. It provides a TypeScript-first experience that syncs perfectly with my backend models.
@@ -76,7 +76,7 @@ When a field agent submits notes, the system uses AI to categorize the field. If
 
 ---
 
-## 🧠 Assumptions
+## Assumptions
 
 1. **Deployment Origin**: The system assumes the backend and frontend are hosted on specific origins for CORS (e.g., Render for backend, specific domain for frontend).
 2. **Connectivity**: Field agents are assumed to have internet access to upload monitoring updates and images.
