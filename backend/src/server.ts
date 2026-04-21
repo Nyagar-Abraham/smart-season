@@ -26,6 +26,8 @@ const PORT = process.env.PORT || 3000;
 const API_BASE_URL = process.env.API_BASE_URL || '/api/v1';
 const COOKIE_PARSER_SECRET = process.env.COOKIE_PARSER_SECRET;
 
+logger.info(`origin ${process.env.ALLOWED_ORIGINS}`);
+
 app.use(cors({
   origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : 'http://localhost:5173',
   credentials: true,

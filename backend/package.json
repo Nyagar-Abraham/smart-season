@@ -7,7 +7,7 @@
     "start": "node dist/server.js",
     "build": "tsc",
     "db:push": "tsx node_modules/drizzle-kit/bin.cjs push --config=src/config/drizzle-config.ts --force",
-    "dev": "nodemon src/server.ts",
+    "dev": "nodemon --exec tsx src/server.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
